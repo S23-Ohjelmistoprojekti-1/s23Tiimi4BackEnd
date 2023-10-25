@@ -24,7 +24,7 @@ public class Vaate {
 		this.väri = väri;
 		this.koko = koko;
 		this.hinta = hinta;
-		Valmistaja = valmistaja;
+		Valmistaja = valmistaja; //jokin pielessä
 	}
 	public long getId() {
 		return id;
@@ -56,10 +56,10 @@ public class Vaate {
 	public void setHinta(double hinta) {
 		this.hinta = hinta;
 	}
-	public String getValmistaja() {
+	public Valmistaja getValmistaja() {
 		return valmistaja;
 	}
-	public void setValmistaja(String valmistaja) {
+	public void setValmistaja(Valmistaja valmistaja) {
 		this.valmistaja = valmistaja;
 	}
 	
