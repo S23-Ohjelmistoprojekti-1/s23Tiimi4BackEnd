@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Item list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="col-md-4">
+    <h1>Items</h1>
+    </div>
+	<div class="col-md-4">
+		
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Tyyppi</th>
+                <th>Väri</th>
+                <th>Koko</th>
+                <th>Hinta</th>
+                <th>Valmistaja</th>
+                <th sec:authorize="hasRole('ADMIN')"> </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr th:each="book : ${workers}">
+                <td th:text="${worker.id}">1</td>
+                <td th:text="${worker.firstname}">Text ...</td>
+                <td th:text="${worker.lastname}">Text ...</td>
+                <td th:text="${worker.start}">Text ...</td>
+                <td th:text="${worker.end}">Text ...</td>
+                <td th:text="${worker.total_hours}">Text ...</td>
+                <td th:text="${book.category.name}">Text ...</td>
+            </tr>
+        </tbody>
+        <a href="/add" class="btn btn-primary">Add Worker</a> 
+    </table>
+</body>
+</html>
