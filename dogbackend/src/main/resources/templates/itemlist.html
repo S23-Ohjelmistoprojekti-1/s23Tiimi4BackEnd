@@ -38,9 +38,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
                 <td th:text="${worker.start}">Text ...</td>
                 <td th:text="${worker.end}">Text ...</td>
                 <td th:text="${worker.total_hours}">Text ...</td>
-                <td th:text="${book.category.name}">Text ...</td>
+                <td th:text="${vaate.category.name}">Text ...</td>
                 <td>
-			<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+			<a th:href="@{/delete/{id}(id=${vaate.id})}" class="btn btn-danger">Delete</a>
 			</td>
             </tr>
         </tbody>
