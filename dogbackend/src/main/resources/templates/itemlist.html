@@ -38,6 +38,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
                 <td th:text="${vaate.koko}">Text ...</td>
                 <td th:text="${vaate.hinta}">Text ...</td>
                 <td th:text="${vaate.valmistaja}">Text ...</td>
+                <td>
+			<a th:href="@{/delete/{id}(id=${vaate.id})}" class="btn btn-danger">Delete</a>
+			</td>
             
             </tr>
         </tbody>
