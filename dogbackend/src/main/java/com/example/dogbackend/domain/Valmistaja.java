@@ -19,7 +19,7 @@ public class Valmistaja {
 	
 	public Valmistaja() {}
 	
-	public Valmistaja(String name) {
+	public Valmistaja(String nimi) {
 		super();
 		this.nimi = nimi;
 		
