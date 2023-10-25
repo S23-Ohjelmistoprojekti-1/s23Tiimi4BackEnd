@@ -24,7 +24,7 @@ public class Vaate {
 		this.väri = väri;
 		this.koko = koko;
 		this.hinta = hinta;
-		Valmistaja = valmistaja; //jokin pielessä
+		this.valmistaja = valmistaja;
 	}
 	public long getId() {
 		return id;
