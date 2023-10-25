@@ -1,10 +1,13 @@
 package com.example.dogbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Vaate {
@@ -15,6 +18,9 @@ public class Vaate {
 	private String väri;
 	private String koko;
 	private double hinta;
+	
+	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name = "valmistajaid")
 	private Valmistaja valmistaja;
 	

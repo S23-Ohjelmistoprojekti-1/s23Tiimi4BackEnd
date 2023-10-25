@@ -16,6 +16,5 @@ public class DogController {
 	public String deleteVaate(@PathVariable Long id) {
 		repository.deleteById(id);
 		return "redirect:/itemlist";
-
 }
 }

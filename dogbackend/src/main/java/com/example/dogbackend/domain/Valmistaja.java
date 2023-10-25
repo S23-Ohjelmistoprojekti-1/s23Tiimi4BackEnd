@@ -15,13 +15,13 @@ public class Valmistaja {
 	private String nimi;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "valmistaja")
-	private List<Vaate> vaatteet;
+	private List<Vaate> vaates;
 	
 	public Valmistaja() {}
 	
 	public Valmistaja(String nimi) {
 		super();
-		this.nimi = nimi;
+	//	this.nimi = nimi;
 		
 	}
 
@@ -42,7 +42,7 @@ public class Valmistaja {
 	}
 	
 	public List<Vaate> getVaates() {
-		return vaatteet;
+		return vaates;
 	}
 
 	
