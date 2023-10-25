@@ -4,26 +4,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class Vaate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String tyyppi;
 	private String väri;
 	private String koko;
 	private double hinta;
-	private String valmistaja;
+	@JoinColumn(name = "valmistajaid")
+	private Valmistaja valmistaja;
 	
-	public Vaate(long id, String tyyppi, String väri, String koko, double hinta, String valmistaja) {
+	public Vaate(String tyyppi, String väri, String koko, double hinta, Valmistaja valmistaja) {
 		super();
-		this.id = id;
 		this.tyyppi = tyyppi;
 		this.väri = väri;
 		this.koko = koko;
 		this.hinta = hinta;
-		this.valmistaja = valmistaja;
+		Valmistaja = valmistaja;
 	}
 	public long getId() {
 		return id;
