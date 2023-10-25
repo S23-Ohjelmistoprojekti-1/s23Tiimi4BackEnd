@@ -41,6 +41,11 @@ public class Valmistaja {
 		this.nimi = nimi;
 	}
 	
+	public List<Vaate> getVaates() {
+		return vaates;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Category [categoryid=" + valmistajaid + ", name=" + nimi + "]";
