@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
+import com.example.dogbackend.domain.Valmistaja;
+import com.example.dogbackend.domain.ValmistajaRepository;
 
 @SpringBootApplication
 public class DogbackendApplication {
@@ -18,12 +20,14 @@ public class DogbackendApplication {
 		SpringApplication.run(DogbackendApplication.class, args);
 	}
 	
-	public CommandLineRunner dogbackendDemo(VaateRepository repository) {
+	public CommandLineRunner dogbackendDemo(VaateRepository repository, ValmistajaRepository vrepository) {
 		return (args) -> {
 			
-		repository.save(new Vaate(0, "Takki", "Punainen", "S", 21.00, "Rukka"));
+			vrepository.save(new Valmistaja("Rukka"));
+			
+		Vaate v1 = new Vaate("Takki", "Punainen", "S", 21.5, vrepository.findbyName("Rukka").get(0));
 		
-		
+		repository.save(v1);
 	};
 		
 	}
