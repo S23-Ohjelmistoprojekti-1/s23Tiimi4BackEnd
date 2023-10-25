@@ -21,7 +21,7 @@ public class Valmistaja {
 	
 	public Valmistaja(String nimi) {
 		super();
-	//	this.nimi = nimi;
+		this.nimi = nimi;
 		
 	}
 
