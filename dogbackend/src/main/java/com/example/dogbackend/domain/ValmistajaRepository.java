@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ValmistajaRepository extends CrudRepository<Valmistaja, Long> {
 
-	List<Valmistaja> findbyName(String nimi);
+	List<Valmistaja> findByNimi(String nimi);
 }
