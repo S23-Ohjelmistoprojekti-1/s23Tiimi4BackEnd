@@ -31,17 +31,17 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
         </thead>
         <tbody>
 
-            <tr th:each="book : ${workers}">
-                <td th:text="${worker.id}">1</td>
-                <td th:text="${worker.firstname}">Text ...</td>
-                <td th:text="${worker.lastname}">Text ...</td>
-                <td th:text="${worker.start}">Text ...</td>
-                <td th:text="${worker.end}">Text ...</td>
-                <td th:text="${worker.total_hours}">Text ...</td>
-                <td th:text="${book.category.name}">Text ...</td>
+            <tr th:each="vaate : ${vaatteet}">
+                <td th:text="${vaate.id}">1</td>
+                <td th:text="${vaate.tyyppi}">Text ...</td>
+                <td th:text="${vaate.vari}">Text ...</td>
+                <td th:text="${vaate.koko}">Text ...</td>
+                <td th:text="${vaate.hinta}">Text ...</td>
+                <td th:text="${vaate.valmistaja}">Text ...</td>
+            
             </tr>
         </tbody>
-        <a href="/add" class="btn btn-primary">Add Worker</a> 
+        <a href="/add" class="btn btn-primary">Add Item</a> 
     </table>
 </body>
 </html>
