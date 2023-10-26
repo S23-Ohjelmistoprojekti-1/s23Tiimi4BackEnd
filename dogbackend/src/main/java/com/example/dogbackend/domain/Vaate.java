@@ -24,6 +24,8 @@ public class Vaate {
 	@JoinColumn(name = "valmistajaid")
 	private Valmistaja valmistaja;
 	
+	public Vaate() {}
+	
 	public Vaate(String tyyppi, String väri, String koko, double hinta, Valmistaja valmistaja) {
 		super();
 		this.tyyppi = tyyppi;
@@ -31,6 +33,7 @@ public class Vaate {
 		this.koko = koko;
 		this.hinta = hinta;
 		this.valmistaja = valmistaja;
+		
 	}
 	public long getId() {
 		return id;
