@@ -15,7 +15,7 @@ public class Vaate {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String tyyppi;
-	private String väri;
+	private String vari;
 	private String koko;
 	private double hinta;
 	
@@ -26,10 +26,10 @@ public class Vaate {
 	
 	public Vaate() {}
 	
-	public Vaate(String tyyppi, String väri, String koko, double hinta, Valmistaja valmistaja) {
+	public Vaate(String tyyppi, String vari, String koko, double hinta, Valmistaja valmistaja) {
 		super();
 		this.tyyppi = tyyppi;
-		this.väri = väri;
+		this.vari = vari;
 		this.koko = koko;
 		this.hinta = hinta;
 		this.valmistaja = valmistaja;
@@ -47,11 +47,11 @@ public class Vaate {
 	public void setTyyppi(String tyyppi) {
 		this.tyyppi = tyyppi;
 	}
-	public String getVäri() {
-		return väri;
+	public String getVari() {
+		return vari;
 	}
-	public void setVäri(String väri) {
-		this.väri = väri;
+	public void setVari(String vari) {
+		this.vari = vari;
 	}
 	public String getKoko() {
 		return koko;
@@ -74,7 +74,7 @@ public class Vaate {
 	
 	@Override
 	public String toString() {
-		return "Vaate [id=" + id + ", tyyppi=" + tyyppi + ", väri=" + väri + ", koko=" + koko + ", hinta=" + hinta
+		return "Vaate [id=" + id + ", tyyppi=" + tyyppi + ", vari=" + vari + ", koko=" + koko + ", hinta=" + hinta
 				+ ", valmistaja=" + valmistaja + "]";
 	}
 

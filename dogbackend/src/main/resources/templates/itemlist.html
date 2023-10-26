@@ -35,8 +35,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
         </thead>
         <tbody>
 
-            <tr th:each="vaate : ${vaatteet}">
-                <td th:text="${vaate.id}">1</td>
+            <tr th:each="vaate : ${Vaatteet}">
+
                 <td th:text="${vaate.tyyppi}">Text ...</td>
                 <td th:text="${vaate.vari}">Text ...</td>
                 <td th:text="${vaate.koko}">Text ...</td>
