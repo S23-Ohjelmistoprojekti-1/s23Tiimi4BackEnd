@@ -1,53 +1,51 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" 
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <title>Item list</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Item list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<div class="col-md-4">
-    <h1>Tuotteet</h1>
-    </div>
 	<div class="col-md-4">
-		
+		<h1>Tuotteet</h1>
 	</div>
-	<div class="col-md-4" style="padding:20px 0">
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
-		</form>
-	</div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style="padding: 5px 0"></div>
 	<div>
-        <a href="/add" class="btn btn-primary">Lisää tuote</a>
-        
-        </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Tyyppi</th>
-                <th>Väri</th>
-                <th>Koko</th>
-                <th>Hinta</th>
-                <th>Valmistaja</th>
-                <th sec:authorize="hasRole('ADMIN')"> </th>
-            </tr>
-        </thead>
-        <tbody>
+		<a href="/add" class="btn btn-primary">Lisää tuote</a>
 
-            <tr th:each="vaate : ${Vaatteet}">
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Tyyppi</th>
+				<th>Väri</th>
+				<th>Koko</th>
+				<th>Hinta</th>
+				<th>Valmistaja</th>
+				<th sec:authorize="hasRole('ADMIN')"></th>
+			</tr>
+		</thead>
+		<tbody>
 
-                <td th:text="${vaate.tyyppi}">Text ...</td>
-                <td th:text="${vaate.vari}">Text ...</td>
-                <td th:text="${vaate.koko}">Text ...</td>
-                <td th:text="${vaate.hinta}">Text ...</td>
-                <td th:text="${vaate.valmistaja.nimi}">Text ...</td>
-                <td>
-			<a th:href="@{/delete/{id}(id=${vaate.id})}" class="btn btn-danger">Delete</a>
-			</td>
-            
-            </tr>
-        </tbody>
-    </table>
+			<tr th:each="vaate : ${Vaatteet}">
+
+				<td th:text="${vaate.tyyppi}">Text ...</td>
+				<td th:text="${vaate.vari}">Text ...</td>
+				<td th:text="${vaate.koko}">Text ...</td>
+				<td th:text="${vaate.hinta}">Text ...</td>
+				<td th:text="${vaate.valmistaja.nimi}">Text ...</td>
+				<td><a th:href="@{/delete/{id}(id=${vaate.id})}"
+					class="btn btn-danger">Delete</a></td>
+
+			</tr>
+		</tbody>
+	</table>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Kirjaudu ulos"
+			class="btn btn-sm btn-danger" />
+	</form>
 </body>
 </html>
