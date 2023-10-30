@@ -45,7 +45,7 @@ public class DogController {
 		return "addValmistaja";
 	}
 	//saving
-	@RequestMapping(value = "/saveVaate", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveVaate (Vaate vaate) {
 		repository.save(vaate);
 		return "redirect:itemlist";
@@ -61,7 +61,7 @@ public class DogController {
 	@RequestMapping(value = "/edit/{id}")
 	public String edit(@PathVariable("id") Long Id, Model model){
 		model.addAttribute("vaate", repository.findById(Id));
-		model.addAttribute("valmistaja", vrepository.findAll());
+		model.addAttribute("valmistajat", vrepository.findAll());
 		return "editItem";
 	}
 }
