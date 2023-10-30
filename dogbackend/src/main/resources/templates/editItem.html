@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Vaate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+</head>
+<body>
+	<div class="container">
+	<h1>Edit vaate</h1>
+		<div class="col-md-4">
+		<form th:object="${vaate}" th:action="@{../save}" action="#" method="post">
+		
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		
+			<label for="tyyppi">Tyyppi</label>
+			<input type="text" id="tyyppi" th:field="*{tyyppi}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="vari">Väri</label>
+			<input type="text" id="vari" th:field="*{vari}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="koko">Koko</label>
+			<input type="text" id="koko" th:field="*{koko}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="hinta">Hinta</label>
+			<input type="text" id="hinta" th:field="*{hinta}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<div class="form-group">
+    <label for="valmistaja">Valmistaja</label>
+    <select th:field="*{valmistaja}" class="form-control">
+        <option th:each="valmistaja : ${valmistajat}" th:value="${valmistaja.valmistajaid}" th:text="${valmistaja.nimi}"></option>
+    </select>
+</div>
+
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" class="btn btn-primary" value="Save"></input>
+		</form>
+		</div>
+	</div>
+</body>
+</html>

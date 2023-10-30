@@ -25,11 +25,13 @@ public class DogController {
 		return "itemlist";
 	}
 	
+	// deleting
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteVaate(@PathVariable Long id) {
 		repository.deleteById(id);
 		return "redirect:/itemlist";
 }
+	// adding
 	@RequestMapping(value = "add")
 	public String addVaate (Model model) {
 		model.addAttribute("vaate", new Vaate());
@@ -42,7 +44,7 @@ public class DogController {
 		model.addAttribute("valmistaja", new Valmistaja());
 		return "addValmistaja";
 	}
-	
+	//saving
 	@RequestMapping(value = "/saveVaate", method = RequestMethod.POST)
 	public String saveVaate (Vaate vaate) {
 		repository.save(vaate);
@@ -53,5 +55,13 @@ public class DogController {
 	public String saveValmistaja (Valmistaja valmistaja) {
 		vrepository.save(valmistaja);
 		return "redirect:itemlist";
+	}
+	
+	//editing
+	@RequestMapping(value = "/edit/{id}")
+	public String edit(@PathVariable("id") Long Id, Model model){
+		model.addAttribute("vaate", repository.findById(Id));
+		model.addAttribute("valmistaja", vrepository.findAll());
+		return "editItem";
 	}
 }

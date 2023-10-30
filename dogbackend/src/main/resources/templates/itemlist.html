@@ -37,8 +37,12 @@
 				<td th:text="${vaate.koko}">Text ...</td>
 				<td th:text="${vaate.hinta}">Text ...</td>
 				<td th:text="${vaate.valmistaja.nimi}">Text ...</td>
+				
+				<td><a th:href="@{/edit/{id}(id=${vaate.id})}"
+					class="btn btn-primary" >Edit</a></td>
 				<td><a th:href="@{/delete/{id}(id=${vaate.id})}"
 					class="btn btn-danger">Delete</a></td>
+				
 
 			</tr>
 		</tbody>
