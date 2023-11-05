@@ -25,11 +25,23 @@ public class DogController {
 		return "itemlist";
 	}
 	
+	@RequestMapping("/valmistajalist")
+	public String valmistajaList(Model model) {
+		model.addAttribute("Valmistajat", vrepository.findAll());
+		return "valmistajaList";
+	}
+	
 	// deleting
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteVaate(@PathVariable Long id) {
 		repository.deleteById(id);
 		return "redirect:/itemlist";
+}
+	
+	@RequestMapping(value = "/delete/valmistaja/{valmistajaid}", method = RequestMethod.GET)
+	public String deleteValmistaja(@PathVariable Long valmistajaid) {
+		vrepository.deleteById(valmistajaid);
+		return "redirect:/valmistajalist";
 }
 	// adding
 	@RequestMapping(value = "add")
@@ -42,6 +54,7 @@ public class DogController {
 	@RequestMapping(value = "addValmistaja")
 	public String addValmistaja (Model model) {
 		model.addAttribute("valmistaja", new Valmistaja());
+		model.addAttribute("Valmistajat", vrepository.findAll());
 		return "addValmistaja";
 	}
 	//saving
@@ -54,7 +67,7 @@ public class DogController {
 	@RequestMapping(value = "/saveValmistaja", method = RequestMethod.POST)
 	public String saveValmistaja (Valmistaja valmistaja) {
 		vrepository.save(valmistaja);
-		return "redirect:itemlist";
+		return "redirect:valmistajalist";
 	}
 	
 	//editing

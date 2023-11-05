@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<title>Valmistaja Lista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="col-md-4">
+		<h1>Valmistajat</h1>
+	</div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style="padding: 5px 0"></div>
+	<div>
+		<a href="/addValmistaja" class="btn btn-primary">Lisää valmistaja</a>
+
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Nimi</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="valmistaja : ${Valmistajat}">
+
+				<td th:text="${valmistaja.nimi}">Text ...</td>
+
+				
+				<td><a th:href="@{/delete/valmistaja/{valmistajaid}(valmistajaid=${valmistaja.valmistajaid})}"
+					class="btn btn-danger">Delete</a></td>
+				
+
+			</tr>
+		</tbody>
+	</table>
+	
+	<a href="/" class="btn btn-primary">Takaisin</a>
+
+</body>
+</html>
