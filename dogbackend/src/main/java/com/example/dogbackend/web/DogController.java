@@ -29,7 +29,7 @@ public class DogController {
         return (List<Vaate>) repository.findAll();
     }  
     
-	// Rest kaikki vaatteet id:llä http://localhost:8080/book/1
+	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/1
     @RequestMapping(value="/vaate/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Vaate> findVaateRest(@PathVariable("id") Long vaateId) {	
     	return repository.findById(vaateId);
