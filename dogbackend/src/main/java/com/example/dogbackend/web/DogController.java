@@ -1,7 +1,7 @@
 package com.example.dogbackend.web;
 
 import java.util.List;
-import java.util.Optional;
+// import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,18 +22,6 @@ public class DogController {
 	private VaateRepository repository;
 	@Autowired
 	private ValmistajaRepository vrepository;
-	
-	// Rest kaikki vaatteet http://localhost:8080/vaatteet
-    @RequestMapping(value="/vaatteet", method = RequestMethod.GET)
-    public @ResponseBody List<Vaate> vaateListRest() {	
-        return (List<Vaate>) repository.findAll();
-    }  
-    
-	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/1
-    @RequestMapping(value="/vaate/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Vaate> findVaateRest(@PathVariable("id") Long vaateId) {	
-    	return repository.findById(vaateId);
-    }
 	
 	@RequestMapping("/itemlist")
 	public String itemList(Model model) {
