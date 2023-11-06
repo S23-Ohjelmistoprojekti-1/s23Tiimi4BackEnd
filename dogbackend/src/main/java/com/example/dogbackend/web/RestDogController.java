@@ -29,9 +29,14 @@ public class RestDogController {
     @RequestMapping(value="/vaatteet", method = RequestMethod.GET)
     public @ResponseBody List<Vaate> vaateListRest() {	
         return (List<Vaate>) repository.findAll();
-    }  
+    }   
+	
+	@RequestMapping(value="/valmistajat", method = RequestMethod.GET)
+	public @ResponseBody List<Valmistaja> valmistajaListRest() {	
+	    return (List<Valmistaja>) vrepository.findAll();
+	}
     
-	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/1
+	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/tyyppi
     @RequestMapping(value="/vaate/{tyyppi}", method = RequestMethod.GET)
     public @ResponseBody List<Vaate> findByTyyppi(@PathVariable("tyyppi") String tyyppiId) {	
     	return repository.findByTyyppi(tyyppiId);
