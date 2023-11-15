@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dogbackend.domain.Asiakas;
+import com.example.dogbackend.domain.AsiakasRepository;
 import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
 import com.example.dogbackend.domain.Valmistaja;
@@ -23,6 +25,8 @@ public class DogController {
 	private VaateRepository repository;
 	@Autowired
 	private ValmistajaRepository vrepository;
+	@Autowired
+	private AsiakasRepository drepository;
 	
 	@GetMapping({"/", "/index"})
 	public String showList() {
@@ -39,6 +43,12 @@ public class DogController {
 	public String valmistajaList(Model model) {
 		model.addAttribute("Valmistajat", vrepository.findAll());
 		return "valmistajaList";
+	}
+	
+	@RequestMapping("/asiakaslist")
+	public String asiakaslist(Model model) {
+		model.addAttribute("Asiakkaat", drepository.findAll());
+		return "asiakasList";
 	}
 	
 	// deleting

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<title>Asiakas list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="col-md-4">
+		<h1>Asiakkaat</h1>
+	</div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style="padding: 5px 0"></div>
+	<div>
+		<a href="/add" class="btn btn-primary">Lisää asiakas</a>
+		
+
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Etunimi</th>
+				<th>Sukunimi</th>
+				<th>Puhelinnumero</th>
+				<th>Email</th>
+				<th sec:authorize="hasRole('ADMIN')"></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="asiakas : ${Asiakkaat}">
+
+				<td th:text="${asiakas.etunimi}">Text ...</td>
+				<td th:text="${asiakas.sukunimi}">Text ...</td>
+				<td th:text="${asiakas.puhelinnumero}">Text ...</td>
+				<td th:text="${asiakas.email}">Text ...</td>
+				
+				<td><a th:href="@{/delete/{id}(id=${asiakas.id})}"
+					class="btn btn-danger">Delete</a></td>
+				
+
+			</tr>
+		</tbody>
+	</table>
+	
+	<a href="/index" class="btn btn-primary">Takaisin</a>
+	
+	</form>
+</body>
+</html>

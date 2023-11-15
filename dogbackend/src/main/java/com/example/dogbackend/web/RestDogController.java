@@ -6,10 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dogbackend.domain.Asiakas;
+import com.example.dogbackend.domain.AsiakasRepository;
 import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
 import com.example.dogbackend.domain.Valmistaja;
@@ -22,6 +26,8 @@ public class RestDogController {
 	private VaateRepository repository;
 	@Autowired
 	private ValmistajaRepository vrepository;
+	@Autowired
+	private AsiakasRepository drepository;
 	
 	@CrossOrigin(origins = "http://localhost:5174")
 	
@@ -40,5 +46,17 @@ public class RestDogController {
     @RequestMapping(value="/vaate/{tyyppi}", method = RequestMethod.GET)
     public @ResponseBody List<Vaate> findByTyyppi(@PathVariable("tyyppi") String tyyppiId) {
     	return repository.findByTyyppiIgnoreCase(tyyppiId);
-    }  
+    } 
+    
+	@RequestMapping(value="/asiakkaat", method = RequestMethod.GET)
+	public @ResponseBody List<Asiakas> asiakasListRest() {	
+	    return (List<Asiakas>) drepository.findAll();
+	}
+    
+    @PostMapping
+    public Asiakas addAsiakas(@RequestBody Asiakas asiakas) {
+    	Asiakas savedAsiakas = drepository.save(asiakas);
+    	return savedAsiakas;
+    }
+    
 }

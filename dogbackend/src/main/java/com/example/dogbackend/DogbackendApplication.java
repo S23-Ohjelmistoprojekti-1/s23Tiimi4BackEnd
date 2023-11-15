@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.dogbackend.domain.Asiakas;
+import com.example.dogbackend.domain.AsiakasRepository;
 import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
 import com.example.dogbackend.domain.Valmistaja;
@@ -23,7 +25,7 @@ public class DogbackendApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner dogbackendDemo(VaateRepository repository, ValmistajaRepository vrepository) {
+	public CommandLineRunner dogbackendDemo(VaateRepository repository, ValmistajaRepository vrepository, AsiakasRepository drepository) {
 		return (args) -> {
 			
 			vrepository.save(new Valmistaja("Rukka"));
@@ -35,7 +37,10 @@ public class DogbackendApplication {
 			
 		Vaate v1 = new Vaate("Takki", "Punainen", "S", 21.5, vrepository.findByNimi("Rukka").get(0));
 		
+		Asiakas a1 = new Asiakas("Pertti", "Peruna", "020123456", "peruna@gmail.com"); 
+		
 		repository.save(v1);
+		drepository.save(a1);
 	};
 		
 	}

@@ -17,19 +17,15 @@ public class Asiakas {
 	private String puhelinnumero;
 	private String email;
 	
-	@ManyToOne
-	private Asiakas asiakas;
-
 	public Asiakas () {}
 
-	public Asiakas(Long id, String etunimi, String sukunimi, String puhelinnumero, String email, Asiakas asiakas) {
+	public Asiakas(String etunimi, String sukunimi, String puhelinnumero, String email) {
 		super();
-		this.id = id;
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.puhelinnumero = puhelinnumero;
 		this.email = email;
-		this.asiakas = asiakas;
+	
 	}
 
 	public Long getId() {
@@ -72,18 +68,12 @@ public class Asiakas {
 		this.email = email;
 	}
 
-	public Asiakas getAsiakas() {
-		return asiakas;
-	}
 
-	public void setAsiakas(Asiakas asiakas) {
-		this.asiakas = asiakas;
-	}
 
 	@Override
 	public String toString() {
 		return "Asiakas [id=" + id + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", puhelinnumero="
-				+ puhelinnumero + ", email=" + email + ", asiakas=" + asiakas + "]";
+				+ puhelinnumero + ", email=" + email + "]";
 	}
 	
 	
