@@ -1,6 +1,9 @@
 package com.example.dogbackend.web;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,13 +32,29 @@ public class RestDogController {
 	@Autowired
 	private AsiakasRepository drepository;
 	
-	@CrossOrigin(origins = "http://localhost:5174")
+	@CrossOrigin(origins = "http://localhost:5173")
 	
-	// Rest kaikki vaatteet http://localhost:8080/vaatteet
-    @RequestMapping(value="/vaatteet", method = RequestMethod.GET)
-    public @ResponseBody List<Vaate> vaateListRest() {	
-        return (List<Vaate>) repository.findAll();
-    }   
+	@RequestMapping(value="/vaatteet", method = RequestMethod.GET)
+	public @ResponseBody List<Map<String, Object>> vaateListRest() {    
+	    List<Vaate> vaatteet = (List<Vaate>) repository.findAll();
+	    List<Map<String, Object>> result = new ArrayList<>();
+
+	    for (Vaate vaate : vaatteet) {
+	        Map<String, Object> vaateMap = new LinkedHashMap<>();
+
+	        vaateMap.put("id", vaate.getId());
+	        vaateMap.put("tyyppi", vaate.getTyyppi());
+	        vaateMap.put("vari", vaate.getVari());
+	        vaateMap.put("koko", vaate.getKoko());
+	        vaateMap.put("hinta", vaate.getHinta());
+	        vaateMap.put("valmistaja", vaate.getValmistaja().getNimi());
+
+	        result.add(vaateMap);
+	    }
+
+	    return result;
+	}
+
 	
 	@RequestMapping(value="/valmistajat", method = RequestMethod.GET)
 	public @ResponseBody List<Valmistaja> valmistajaListRest() {	
