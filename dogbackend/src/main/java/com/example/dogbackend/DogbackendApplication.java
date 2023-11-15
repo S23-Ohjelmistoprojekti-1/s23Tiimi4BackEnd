@@ -34,8 +34,12 @@ public class DogbackendApplication {
 			vrepository.save(new Valmistaja("Feel Active"));
 			
 		Vaate v1 = new Vaate("Takki", "Punainen", "S", 21.5, vrepository.findByNimi("Rukka").get(0));
+		Vaate v2 = new Vaate("Liivi", "Sininen", "M", 15.50, vrepository.findByNimi("Hurtta").get(0));
+
 		
 		repository.save(v1);
+		repository.save(v2);
+
 	};
 		
 	}
