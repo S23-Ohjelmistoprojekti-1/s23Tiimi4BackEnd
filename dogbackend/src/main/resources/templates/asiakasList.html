@@ -37,8 +37,8 @@
 				<td th:text="${asiakas.puhelinnumero}">Text ...</td>
 				<td th:text="${asiakas.email}">Text ...</td>
 				
-				<td><a th:href="@{/delete/{id}(id=${asiakas.id})}"
-					class="btn btn-danger">Delete</a></td>
+				<td><a th:href="@{/delete/asiakas/{asiakasid}(asiakasid=${asiakas.id})}" 
+				class="btn btn-danger">Poista</a></td>
 				
 
 			</tr>

@@ -51,6 +51,13 @@ public class DogController {
 		return "asiakasList";
 	}
 	
+	@RequestMapping(value = "/delete/asiakas/{asiakasid}", method = RequestMethod.GET)
+	public String deleteAsiakas(@PathVariable Long asiakasid) {
+	    drepository.deleteById(asiakasid);
+	    return "redirect:/asiakaslist";
+	}
+
+	
 	// deleting
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteVaate(@PathVariable Long id) {

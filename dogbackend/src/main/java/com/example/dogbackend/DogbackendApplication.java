@@ -38,7 +38,6 @@ public class DogbackendApplication {
 		Vaate v1 = new Vaate("Takki", "Punainen", "S", 21.5, vrepository.findByNimi("Rukka").get(0));
 		Vaate v2 = new Vaate("Liivi", "Sininen", "M", 15.50, vrepository.findByNimi("Hurtta").get(0));
 
-		
 		Asiakas a1 = new Asiakas("Pertti", "Peruna", "020123456", "peruna@gmail.com"); 
 		
 		repository.save(v1);
@@ -49,6 +48,6 @@ public class DogbackendApplication {
 		
 	}
 	
-	}
+}
 
 
