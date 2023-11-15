@@ -42,12 +42,9 @@ public class DogbackendApplication {
 		Asiakas a1 = new Asiakas("Pertti", "Peruna", "020123456", "peruna@gmail.com"); 
 		
 		repository.save(v1);
-<<<<<<< HEAD
 		drepository.save(a1);
-=======
-		repository.save(v2);
 
->>>>>>> 0ae207e4b1c255a5941d954a9da7c931567f5eb0
+		repository.save(v2);
 	};
 		
 	}
