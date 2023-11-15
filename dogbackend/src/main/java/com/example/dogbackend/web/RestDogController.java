@@ -6,14 +6,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.example.dogbackend.domain.Asiakas;
 import com.example.dogbackend.domain.AsiakasRepository;
@@ -32,7 +38,25 @@ public class RestDogController {
 	@Autowired
 	private AsiakasRepository drepository;
 	
-	@CrossOrigin(origins = "http://localhost:5173")
+	@Configuration
+	public class CorsConfig {
+
+	    @Bean
+	    public CorsFilter corsFilter() {
+	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	        CorsConfiguration config = new CorsConfiguration();
+	        config.setAllowCredentials(true);
+	        config.addAllowedOrigin("http://localhost:5173"); // Add your frontend origin here
+	        config.addAllowedHeader("*");
+	        config.addAllowedMethod("OPTIONS");
+	        config.addAllowedMethod("GET");
+	        config.addAllowedMethod("POST");
+	        config.addAllowedMethod("PUT");
+	        config.addAllowedMethod("DELETE");
+	        source.registerCorsConfiguration("/**", config);
+	        return new CorsFilter(source);
+	    }
+	}
 	
 	@RequestMapping(value="/vaatteet", method = RequestMethod.GET)
 	public @ResponseBody List<Map<String, Object>> vaateListRest() {    
@@ -72,10 +96,15 @@ public class RestDogController {
 	    return (List<Asiakas>) drepository.findAll();
 	}
     
-    @PostMapping
-    public Asiakas addAsiakas(@RequestBody Asiakas asiakas) {
-    	Asiakas savedAsiakas = drepository.save(asiakas);
-    	return savedAsiakas;
-    }
+	@PostMapping("/asiakkaat")
+	public ResponseEntity<?> addAsiakas(@RequestBody Asiakas asiakas) {
+	    try {
+	        Asiakas savedAsiakas = drepository.save(asiakas);
+	        return ResponseEntity.ok(savedAsiakas);
+	    } catch (Exception e) {
+	        e.printStackTrace(); // Log the exception
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add Asiakas to the database");
+	    }
+	}
     
 }
