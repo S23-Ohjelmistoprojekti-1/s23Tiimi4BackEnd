@@ -56,7 +56,6 @@ public class DogController {
 	    drepository.deleteById(asiakasid);
 	    return "redirect:/asiakaslist";
 	}
-
 	
 	// deleting
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -104,4 +103,17 @@ public class DogController {
 		model.addAttribute("valmistajat", vrepository.findAll());
 		return "editItem";
 	}
+	
+	@RequestMapping(value = "/editasiakas/{id}")
+	public String editCustomer(@PathVariable("id") Long Id, Model model){
+	    model.addAttribute("asiakas", drepository.findById(Id));
+	    return "editAsiakas";
+	}
+	
+	@RequestMapping(value = "/saveasiakas", method = RequestMethod.POST)
+	public String saveAsiakas (Asiakas asiakas) {
+	    drepository.save(asiakas);
+	    return "redirect:/asiakaslist";
+	}
+
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-<title>Asiakas list</title>
+<title>Asiakaslista</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
 	th:href="@{css/bootstrap.min.css}" />
@@ -15,7 +15,6 @@
 	<div class="col-md-4" style="padding: 5px 0"></div>
 	<div>
 		<a href="/add" class="btn btn-primary">Lisää asiakas</a>
-		
 
 	</div>
 	<table>
@@ -36,17 +35,19 @@
 				<td th:text="${asiakas.sukunimi}">Text ...</td>
 				<td th:text="${asiakas.puhelinnumero}">Text ...</td>
 				<td th:text="${asiakas.email}">Text ...</td>
-				
-				<td><a th:href="@{/delete/asiakas/{asiakasid}(asiakasid=${asiakas.id})}" 
-				class="btn btn-danger">Poista</a></td>
-				
 
+				<td><a
+					th:href="@{/editasiakas/{asiakasid}(asiakasid=${asiakas.id})}"
+					class="btn btn-primary">Muokkaa</a></td>
+				<td><a
+					th:href="@{/delete/asiakas/{asiakasid}(asiakasid=${asiakas.id})}"
+					class="btn btn-danger">Poista</a></td>
 			</tr>
 		</tbody>
 	</table>
-	
+
 	<a href="/index" class="btn btn-primary">Takaisin</a>
-	
+
 	</form>
 </body>
 </html>

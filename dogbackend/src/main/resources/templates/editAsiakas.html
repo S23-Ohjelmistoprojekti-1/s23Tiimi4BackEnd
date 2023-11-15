@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Asiakas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+</head>
+<body>
+	<div class="container">
+	<h1>Edit asiakas</h1>
+		<div class="col-md-4">
+		<form th:object="${asiakas}" th:action="@{../saveasiakas}" action="#" method="post">
+		
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		
+			<label for="enimi">Etunimi</label>
+			<input type="text" id="enimi" th:field="*{etunimi}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="snimi">Sukunimi</label>
+			<input type="text" id="snimi" th:field="*{sukunimi}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="puhnro">Puhelinumero</label>
+			<input type="text" id="puhnro" th:field="*{puhelinnumero}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="email">Email</label>
+			<input type="text" id="email" th:field="*{email}" class="form-control"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" class="btn btn-primary" value="Save"></input>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
