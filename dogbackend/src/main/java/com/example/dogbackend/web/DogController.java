@@ -33,6 +33,11 @@ public class DogController {
 		return "index";
 	}
 	
+	 @RequestMapping(value="/login")
+	    public String login() {	
+	        return "login";
+	    }	
+	
 	@RequestMapping("/itemlist")
 	public String itemList(Model model) {
 		model.addAttribute("Vaatteet", repository.findAll());
