@@ -22,6 +22,9 @@
 			<tr>
 				<th>Etunimi</th>
 				<th>Sukunimi</th>
+				<th>Kotiosoite</th>
+				<th>Postinumero</th>
+				<th>Postitoimipaikka</th>
 				<th>Puhelinnumero</th>
 				<th>Email</th>
 				<th sec:authorize="hasRole('ADMIN')"></th>
@@ -33,6 +36,9 @@
 
 				<td th:text="${asiakas.etunimi}">Text ...</td>
 				<td th:text="${asiakas.sukunimi}">Text ...</td>
+				<td th:text="${asiakas.kotiosoite}">Text ...</td>
+				<td th:text="${asiakas.postinumero}">Text ...</td>
+				<td th:text="${asiakas.postitoimipaikka}">Text ...</td>
 				<td th:text="${asiakas.puhelinnumero}">Text ...</td>
 				<td th:text="${asiakas.email}">Text ...</td>
 
