@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Koiravaatekauppa</title>
 </head>
@@ -8,5 +8,10 @@
     <a href="/itemlist" class="btn btn-primary">Tuotteet</a>
     <a href="/valmistajalist" class="btn btn-primary">Valmistajat</a>
     <a href="/asiakaslist" class="btn btn-primary">Asiakkaat</a>
+    <div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
 </body>
 </html>
