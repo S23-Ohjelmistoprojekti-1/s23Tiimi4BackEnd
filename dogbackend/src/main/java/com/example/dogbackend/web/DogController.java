@@ -83,6 +83,14 @@ public class DogController {
 		model.addAttribute("Valmistajat", vrepository.findAll());
 		return "addValmistaja";
 	}
+	
+	@RequestMapping(value = "addAsiakas")
+	public String addAsiakas (Model model) {
+		model.addAttribute("asiakas", new Asiakas());
+		model.addAttribute("Asiakkaat", drepository.findAll());
+		return "addAsiakas";
+	}
+	
 	//saving
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveVaate (Vaate vaate) {
