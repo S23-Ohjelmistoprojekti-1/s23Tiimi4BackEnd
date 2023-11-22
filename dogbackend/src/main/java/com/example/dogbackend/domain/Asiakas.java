@@ -6,18 +6,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Asiakas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotEmpty
 	private String etunimi;
+	@NotEmpty
 	private String sukunimi;
+	
 	private String kotiosoite;
 	private String postinumero;
 	private String postitoimipaikka;
 	private String puhelinnumero;
+	
+	@NotEmpty
+	@Size(min=2, max=50)
 	private String email;
 	
 	public Asiakas () {}

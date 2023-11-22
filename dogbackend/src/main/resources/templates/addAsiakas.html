@@ -13,10 +13,12 @@
 		
 			<label for="enimi">Etunimi</label>
 			<input type="text" id="enimi" th:field="*{etunimi}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('etunimi')}" th:errors="*{etunimi}">error</span>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="snimi">Sukunimi</label>
 			<input type="text" id="snimi" th:field="*{sukunimi}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('sukunimi')}" th:errors="*{sukunimi}">error</span>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="osoite">Kotiosoite</label>
@@ -37,6 +39,7 @@
 			
 			<label for="email">Email</label>
 			<input type="text" id="email" th:field="*{email}" class="form-control"/>
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error</span>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<input type="submit" class="btn btn-primary" value="Save"></input>

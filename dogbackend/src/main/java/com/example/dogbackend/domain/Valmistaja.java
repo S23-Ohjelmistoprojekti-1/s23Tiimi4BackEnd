@@ -8,12 +8,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+
+
 
 @Entity
 public class Valmistaja {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private long valmistajaid;
+	
+	@NotEmpty
 	private String nimi;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "valmistaja")

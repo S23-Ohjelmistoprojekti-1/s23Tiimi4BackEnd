@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+
 //import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dogbackend.domain.Asiakas;
@@ -18,6 +21,8 @@ import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
 import com.example.dogbackend.domain.Valmistaja;
 import com.example.dogbackend.domain.ValmistajaRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class DogController {
@@ -98,13 +103,24 @@ public class DogController {
 	
 	//saving
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveVaate (Vaate vaate) {
+	public String saveVaate (@Valid @ModelAttribute("vaate") Vaate vaate, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			System.out.println("Valid error" + vaate);
+			// model.addAttribute("vaate", new Vaate());
+			model.addAttribute("valmistajat", vrepository.findAll());
+		    return "addItem";
+		}
+		System.out.println("SAVE " + vaate);
 		repository.save(vaate);
-		return "redirect:itemlist";
+		return "redirect:/itemlist";
 	}
 	
+	//savevalmistaja
 	@RequestMapping(value = "/saveValmistaja", method = RequestMethod.POST)
-	public String saveValmistaja (Valmistaja valmistaja) {
+	public String saveValmistaja (@Valid @ModelAttribute("valmistaja") Valmistaja valmistaja, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			return "addValmistaja";
+		}
 		vrepository.save(valmistaja);
 		return "redirect:valmistajalist";
 	}
@@ -123,10 +139,21 @@ public class DogController {
 	    return "editAsiakas";
 	}
 	
+	//saveasiakas
 	@RequestMapping(value = "/saveasiakas", method = RequestMethod.POST)
-	public String saveAsiakas (Asiakas asiakas) {
-	    drepository.save(asiakas);
+	public String saveAsiakas (@Valid @ModelAttribute("asiakas") Asiakas asiakas, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			System.out.println("Valid error" + asiakas);
+		    return "addAsiakas";
+		}
+		
+		drepository.save(asiakas);
 	    return "redirect:/asiakaslist";
 	}
-
+	
+    @RequestMapping(value="/add", method=RequestMethod.POST)
+    public String addValid(Vaate vaate, Model model) {
+    	model.addAttribute("Vaate", vaate);
+	    return "addItem";
+    }
 }

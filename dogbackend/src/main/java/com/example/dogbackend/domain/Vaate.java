@@ -9,14 +9,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 @Entity
 public class Vaate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private Long id;
+	
+	@NotEmpty
+	@Size(min=2, max=50)
 	private String tyyppi;
+
 	private String vari;
+	
 	private String koko;
+	
 	private double hinta;
 	
 	@JsonIgnore
