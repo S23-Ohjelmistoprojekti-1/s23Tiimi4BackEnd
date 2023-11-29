@@ -21,7 +21,7 @@ public class Vaate {
 	
 	@NotEmpty
 	@Size(min=2, max=50)
-	private String tyyppi;
+	private String nimi;
 
 	private String vari;
 	
@@ -34,10 +34,16 @@ public class Vaate {
 	@JoinColumn(name = "valmistajaid")
 	private Valmistaja valmistaja;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "tyyppiid")
+	private Tyyppi tyyppi;
+	
 	public Vaate() {}
 	
-	public Vaate(String tyyppi, String vari, String koko, double hinta, Valmistaja valmistaja) {
+	public Vaate(String nimi, Tyyppi tyyppi, String vari, String koko, double hinta, Valmistaja valmistaja) {
 		super();
+		this.nimi = nimi;
 		this.tyyppi = tyyppi;
 		this.vari = vari;
 		this.koko = koko;
@@ -53,10 +59,16 @@ public class Vaate {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getTyyppi() {
+	public String getNimi() {
+		return nimi;
+	}
+	public void setNimi(String nimi) {
+		this.nimi = nimi;
+	}
+	public Tyyppi getTyyppi() {
 		return tyyppi;
 	}
-	public void setTyyppi(String tyyppi) {
+	public void setTyyppi(Tyyppi tyyppi) {
 		this.tyyppi = tyyppi;
 	}
 	public String getVari() {
@@ -83,12 +95,14 @@ public class Vaate {
 	public void setValmistaja(Valmistaja valmistaja) {
 		this.valmistaja = valmistaja;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Vaate [id=" + id + ", tyyppi=" + tyyppi + ", vari=" + vari + ", koko=" + koko + ", hinta=" + hinta
-				+ ", valmistaja=" + valmistaja + "]";
+		return "Vaate [id=" + id + ", tyyppi=" + tyyppi + ", nimi=" + nimi + ", vari=" + vari + ", koko=" + koko
+				+ ", hinta=" + hinta + ", valmistaja=" + valmistaja + "]";
 	}
+	
+
 
 	
 	

@@ -21,6 +21,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Nimi</th>
 				<th>Tyyppi</th>
 				<th>Väri</th>
 				<th>Koko</th>
@@ -33,7 +34,8 @@
 
 			<tr th:each="vaate : ${Vaatteet}">
 
-				<td th:text="${vaate.tyyppi}">Text ...</td>
+				<td th:text="${vaate.nimi}">Text ...</td>
+				<td th:text="${vaate.tyyppi.nimi}">Text ...</td>
 				<td th:text="${vaate.vari}">Text ...</td>
 				<td th:text="${vaate.koko}">Text ...</td>
 				<td th:text="${vaate.hinta}">Text ...</td>
