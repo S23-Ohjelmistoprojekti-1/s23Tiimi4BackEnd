@@ -67,7 +67,7 @@ public class RestDogController {
 	        Map<String, Object> vaateMap = new LinkedHashMap<>();
 
 	        vaateMap.put("id", vaate.getId());
-	        vaateMap.put("tyyppi", vaate.getTyyppi());
+	        vaateMap.put("nimi", vaate.getNimi());
 	        vaateMap.put("vari", vaate.getVari());
 	        vaateMap.put("koko", vaate.getKoko());
 	        vaateMap.put("hinta", vaate.getHinta());
@@ -87,8 +87,8 @@ public class RestDogController {
     
 	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/tyyppi
     @RequestMapping(value="/vaate/{tyyppi}", method = RequestMethod.GET)
-    public @ResponseBody List<Vaate> findByTyyppi(@PathVariable("tyyppi") String tyyppiId) {
-    	return repository.findByTyyppiIgnoreCase(tyyppiId);
+    public @ResponseBody List<Vaate> findByTyyppi(@PathVariable("nimi") String nimiId) {
+    	return repository.findByNimiIgnoreCase(nimiId);
     } 
     
 	@RequestMapping(value="/asiakkaat", method = RequestMethod.GET)
