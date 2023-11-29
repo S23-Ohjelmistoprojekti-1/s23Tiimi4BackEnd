@@ -28,6 +28,7 @@
 			<tr th:each="valmistaja : ${Valmistajat}">
 
 				<td th:text="${valmistaja.nimi}">Text ...</td>
+				<td><a th:href="@{/valmistaja/{valmistajaid}/vaatteet(valmistajaid=${valmistaja.valmistajaid})}">Katso tuotteet</a></td>
 
 				
 				<td><a th:href="@{/delete/valmistaja/{valmistajaid}(valmistajaid=${valmistaja.valmistajaid})}"

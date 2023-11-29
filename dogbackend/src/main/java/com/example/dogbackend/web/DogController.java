@@ -1,5 +1,7 @@
 package com.example.dogbackend.web;
 
+import java.util.List;
+
 //import java.util.List;
 // import java.util.Optional;
 
@@ -155,5 +157,19 @@ public class DogController {
     public String addValid(Vaate vaate, Model model) {
     	model.addAttribute("Vaate", vaate);
 	    return "addItem";
+    }
+    
+    @GetMapping("/valmistaja/{valmistajaid}/vaatteet")
+    public String valmistajaVaatteet(@PathVariable Long valmistajaid, Model model) {
+        Valmistaja valmistaja = vrepository.findById(valmistajaid).orElse(null);
+        if (valmistaja != null) {
+            List<Vaate> valmistajaVaatteet = repository.findByValmistaja(valmistaja);
+            model.addAttribute("valmistaja", valmistaja);
+            model.addAttribute("valmistajaVaatteet", valmistajaVaatteet);
+            return "valmistajaVaatteet";
+        } else {
+            System.out.println("Valmistajaa ei löytynyt");
+            return "error";
+        }
     }
 }

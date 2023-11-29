@@ -6,5 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface VaateRepository extends CrudRepository<Vaate, Long>{
 		List<Vaate> findByTyyppiIgnoreCase(String tyyppi);
+		List<Vaate> findByValmistaja(Valmistaja valmistaja);
 }
 

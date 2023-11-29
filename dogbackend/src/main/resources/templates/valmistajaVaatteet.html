@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<title>Valmistajan Tuotteet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="col-md-4">
+		<h1>Valmistajan Tuotteet</h1>
+	</div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style="padding: 5px 0"></div>
+	<div>		
+
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Tyyppi</th>
+				<th>Väri</th>
+				<th>Koko</th>
+				<th>Hinta</th>
+				<th>Valmistaja</th>
+				<th sec:authorize="hasRole('ADMIN')"></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="vaate : ${valmistajaVaatteet}">
+
+				<td th:text="${vaate.tyyppi}">Text ...</td>
+				<td th:text="${vaate.vari}">Text ...</td>
+				<td th:text="${vaate.koko}">Text ...</td>
+				<td th:text="${vaate.hinta}">Text ...</td>
+				<td th:text="${vaate.valmistaja.nimi}">Text ...</td>
+				
+						
+
+			</tr>
+		</tbody>
+	</table>
+	
+	<a href="/valmistajalist" class="btn btn-primary">Takaisin</a>
+	
+</body>
+</html>

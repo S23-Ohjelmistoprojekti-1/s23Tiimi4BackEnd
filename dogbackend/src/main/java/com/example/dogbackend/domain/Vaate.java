@@ -45,6 +45,8 @@ public class Vaate {
 		this.valmistaja = valmistaja;
 		
 	}
+	
+	
 	public long getId() {
 		return id;
 	}
