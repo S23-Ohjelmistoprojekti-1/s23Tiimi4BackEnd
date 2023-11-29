@@ -14,10 +14,18 @@
 			<label for="id"></label>
 			<input type="hidden" id="id" th:field="*{id}" readonly="readonly"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
-		
-			<label for="tyyppi">Tyyppi</label>
-			<input type="text" id="tyyppi" th:field="*{tyyppi}" class="form-control"/>
+			
+					  	<label for="nimi">Nimi</label>
+			<input type="text" id="nimi" th:field="*{nimi}" />
+			<span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}">error</span>
 			<div style="clear: both; display: block; height: 10px;"></div>
+		
+			<div class="form-group">
+    <label for="tyyppi">Tyyppi</label>
+    <select th:field="*{tyyppi}" class="form-control">
+        <option th:each="tyyppi : ${tyypit}" th:value="${tyyppi.tyyppid}" th:text="${tyyppi.nimi}"></option>
+    </select>
+    </div>
 			
 			<label for="vari">Väri</label>
 			<input type="text" id="vari" th:field="*{vari}" class="form-control"/>

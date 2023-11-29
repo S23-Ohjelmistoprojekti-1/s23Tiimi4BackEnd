@@ -7,11 +7,20 @@
 <body>
 	<h1>Lisää vaate</h1>
 	<div>
-<form th:object="${vaate}" th:action="@{/save}" action="#" method="post">
-		  	<label for="tyyppi">Tyyppi</label>
-			<input type="text" id="tyyppi" th:field="*{tyyppi}" />
-<span th:if="${#fields.hasErrors('tyyppi')}" th:errors="*{tyyppi}">tyyppi error</span>
+	
+	<form th:object="${vaate}" th:action="@{/save}" action="#" method="post">
+	
+		  	<label for="nimi">Nimi</label>
+			<input type="text" id="nimi" th:field="*{nimi}" />
+			<span th:if="${#fields.hasErrors('nimi')}" th:errors="*{nimi}">error</span>
 			<div style="clear: both; display: block; height: 10px;"></div>
+	
+			<div class="form-group">
+    <label for="tyyppi">Tyyppi</label>
+    <select th:field="*{tyyppi}" class="form-control">
+        <option th:each="tyyppi : ${tyypit}" th:value="${tyyppi.tyyppid}" th:text="${tyyppi.nimi}"></option>
+    </select>
+    </div>
 			
 		  	<label for="vari">Väri</label>
 			<input type="text" id="vari" th:field="*{vari}" />

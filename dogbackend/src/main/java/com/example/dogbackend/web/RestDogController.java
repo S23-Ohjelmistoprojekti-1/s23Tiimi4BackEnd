@@ -85,11 +85,11 @@ public class RestDogController {
 	    return (List<Valmistaja>) vrepository.findAll();
 	}
     
-	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/tyyppi
-    @RequestMapping(value="/vaate/{tyyppi}", method = RequestMethod.GET)
-    public @ResponseBody List<Vaate> findByTyyppi(@PathVariable("tyyppi") String tyyppiId) {
-    	return repository.findByTyyppiIgnoreCase(tyyppiId);
-    } 
+	// Rest kaikki vaatteet id:llä http://localhost:8080/vaate/nimi
+    //@RequestMapping(value="/vaate/{nimi}", method = RequestMethod.GET)
+    //public @ResponseBody List<Vaate> findByVaate(@PathVariable("vaate") String VaateId) {
+   // 	return repository.findByVaate(VaateId);
+   // } 
     
 	@RequestMapping(value="/asiakkaat", method = RequestMethod.GET)
 	public @ResponseBody List<Asiakas> asiakasListRest() {	
