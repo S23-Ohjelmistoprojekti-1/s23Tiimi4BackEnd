@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 // import com.example.dogbackend.domain.Vaate;
 
 public interface VaateRepository extends CrudRepository<Vaate, Long>{
-		List<Vaate> findByNimiIgnoreCase(String nimi);
-}
 
+		List<Vaate> findByTyyppi(Tyyppi tyyppi);
+		List<Vaate> findByValmistaja(Valmistaja valmistaja);
+}
