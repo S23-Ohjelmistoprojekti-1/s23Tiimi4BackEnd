@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 
 import com.example.dogbackend.domain.Asiakas;
 import com.example.dogbackend.domain.AsiakasRepository;
+import com.example.dogbackend.domain.TyyppiRepository;
 import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
 import com.example.dogbackend.domain.Valmistaja;
@@ -34,6 +35,8 @@ public class DogController {
 	private ValmistajaRepository vrepository;
 	@Autowired
 	private AsiakasRepository drepository;
+	@Autowired
+	private TyyppiRepository trepository;
 	
 	@GetMapping({"/", "index"})
 	public String showHome() {
@@ -86,6 +89,7 @@ public class DogController {
 	public String addVaate (Model model) {
 		model.addAttribute("vaate", new Vaate());
 		model.addAttribute("valmistajat", vrepository.findAll());
+		model.addAttribute("tyypit", trepository.findAll());
 		return "addItem";
 	}
 	
