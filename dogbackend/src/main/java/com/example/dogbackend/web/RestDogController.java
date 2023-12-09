@@ -23,6 +23,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import com.example.dogbackend.domain.Asiakas;
 import com.example.dogbackend.domain.AsiakasRepository;
+import com.example.dogbackend.domain.TyyppiRepository;
 import com.example.dogbackend.domain.Vaate;
 import com.example.dogbackend.domain.VaateRepository;
 import com.example.dogbackend.domain.Valmistaja;
@@ -37,6 +38,8 @@ public class RestDogController {
 	private ValmistajaRepository vrepository;
 	@Autowired
 	private AsiakasRepository drepository;
+	//@Autowired
+	//private TyyppiRepository tRepository;
 	
 	@Configuration
 	public class CorsConfig {
@@ -67,7 +70,8 @@ public class RestDogController {
 	        Map<String, Object> vaateMap = new LinkedHashMap<>();
 
 	        vaateMap.put("id", vaate.getId());
-	        vaateMap.put("tyyppi", vaate.getTyyppi());
+	        vaateMap.put("nimi", vaate.getNimi());
+	        vaateMap.put("tyyppi", vaate.getTyyppi().getNimi());
 	        vaateMap.put("vari", vaate.getVari());
 	        vaateMap.put("koko", vaate.getKoko());
 	        vaateMap.put("hinta", vaate.getHinta());
