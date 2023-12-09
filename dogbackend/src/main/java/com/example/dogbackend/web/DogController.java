@@ -136,6 +136,7 @@ public class DogController {
 	public String edit(@PathVariable("id") Long Id, Model model){
 		model.addAttribute("vaate", repository.findById(Id));
 		model.addAttribute("valmistajat", vrepository.findAll());
+		model.addAttribute("tyypit", trepository.findAll());
 		return "editItem";
 	}
 	

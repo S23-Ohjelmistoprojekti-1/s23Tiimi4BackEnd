@@ -23,7 +23,7 @@
 			<div class="form-group">
     <label for="tyyppi">Tyyppi</label>
     <select th:field="*{tyyppi}" class="form-control">
-        <option th:each="tyyppi : ${tyypit}" th:value="${tyyppi.tyyppid}" th:text="${tyyppi.nimi}"></option>
+        <option th:each="tyyppi : ${tyypit}" th:value="${tyyppi.tyyppiid}" th:text="${tyyppi.nimi}"></option>
     </select>
     </div>
 			
