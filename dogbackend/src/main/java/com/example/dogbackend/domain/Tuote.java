@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
-public class Vaate {
+public class Tuote {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
@@ -39,9 +39,9 @@ public class Vaate {
 	@JoinColumn(name = "tyyppiid")
 	private Tyyppi tyyppi;
 	
-	public Vaate() {}
+	public Tuote() {}
 	
-	public Vaate(String nimi, Tyyppi tyyppi, String vari, String koko, double hinta, Valmistaja valmistaja) {
+	public Tuote(String nimi, Tyyppi tyyppi, String vari, String koko, double hinta, Valmistaja valmistaja) {
 		super();
 		this.nimi = nimi;
 		this.tyyppi = tyyppi;

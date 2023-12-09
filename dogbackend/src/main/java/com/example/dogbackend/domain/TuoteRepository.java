@@ -4,8 +4,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 // import com.example.dogbackend.domain.Vaate;
 
-public interface VaateRepository extends CrudRepository<Vaate, Long>{
+public interface TuoteRepository extends CrudRepository<Tuote, Long>{
 
-		List<Vaate> findByTyyppi(Tyyppi tyyppi);
-		List<Vaate> findByValmistaja(Valmistaja valmistaja);
+		List<Tuote> findByTyyppi(Tyyppi tyyppi);
+		List<Tuote> findByValmistaja(Valmistaja valmistaja);
 }

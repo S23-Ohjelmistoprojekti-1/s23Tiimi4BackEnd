@@ -24,8 +24,8 @@ import org.springframework.web.filter.CorsFilter;
 import com.example.dogbackend.domain.Asiakas;
 import com.example.dogbackend.domain.AsiakasRepository;
 import com.example.dogbackend.domain.TyyppiRepository;
-import com.example.dogbackend.domain.Vaate;
-import com.example.dogbackend.domain.VaateRepository;
+import com.example.dogbackend.domain.Tuote;
+import com.example.dogbackend.domain.TuoteRepository;
 import com.example.dogbackend.domain.Valmistaja;
 import com.example.dogbackend.domain.ValmistajaRepository;
 
@@ -33,7 +33,7 @@ import com.example.dogbackend.domain.ValmistajaRepository;
 public class RestDogController {
 	
 	@Autowired
-	private VaateRepository repository;
+	private TuoteRepository repository;
 	@Autowired
 	private ValmistajaRepository vrepository;
 	@Autowired
@@ -63,10 +63,10 @@ public class RestDogController {
 	
 	@RequestMapping(value="/vaatteet", method = RequestMethod.GET)
 	public @ResponseBody List<Map<String, Object>> vaateListRest() {    
-	    List<Vaate> vaatteet = (List<Vaate>) repository.findAll();
+	    List<Tuote> vaatteet = (List<Tuote>) repository.findAll();
 	    List<Map<String, Object>> result = new ArrayList<>();
 
-	    for (Vaate vaate : vaatteet) {
+	    for (Tuote vaate : vaatteet) {
 	        Map<String, Object> vaateMap = new LinkedHashMap<>();
 
 	        vaateMap.put("id", vaate.getId());

@@ -23,7 +23,7 @@ public class Valmistaja {
 	private String nimi;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "valmistaja")
-	private List<Vaate> vaatteet;
+	private List<Tuote> vaatteet;
 	
 	public Valmistaja() {}
 	
@@ -49,7 +49,7 @@ public class Valmistaja {
 		this.nimi = nimi;
 	}
 	
-	public List<Vaate> getVaatteet() {
+	public List<Tuote> getVaatteet() {
 		return vaatteet;
 	}
 

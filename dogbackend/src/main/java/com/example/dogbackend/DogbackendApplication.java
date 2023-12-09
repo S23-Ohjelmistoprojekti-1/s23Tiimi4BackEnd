@@ -9,8 +9,8 @@ import com.example.dogbackend.domain.Asiakas;
 import com.example.dogbackend.domain.AsiakasRepository;
 import com.example.dogbackend.domain.Kayttaja;
 import com.example.dogbackend.domain.KayttajaRepository;
-import com.example.dogbackend.domain.Vaate;
-import com.example.dogbackend.domain.VaateRepository;
+import com.example.dogbackend.domain.Tuote;
+import com.example.dogbackend.domain.TuoteRepository;
 import com.example.dogbackend.domain.Valmistaja;
 import com.example.dogbackend.domain.ValmistajaRepository;
 import com.example.dogbackend.domain.Tyyppi;
@@ -24,7 +24,7 @@ public class DogbackendApplication {
     }
 
     @Bean
-    public CommandLineRunner dogbackendDemo(VaateRepository repository, TyyppiRepository trepository, AsiakasRepository drepository,
+    public CommandLineRunner dogbackendDemo(TuoteRepository repository, TyyppiRepository trepository, AsiakasRepository drepository,
             KayttajaRepository krepository, ValmistajaRepository vrepository) {
         return (args) -> {
 
@@ -39,8 +39,8 @@ public class DogbackendApplication {
 			vrepository.save(new Valmistaja("Hurtta"));
 			vrepository.save(new Valmistaja("Feel Active"));
 
-            Vaate v1 = new Vaate("Takki", trepository.findByNimi("Vaate").get(0), "Punainen", "S", 21.5, vrepository.findByNimi("Rukka").get(0));
-            Vaate v2 = new Vaate("Vinkulelu", trepository.findByNimi("Lelu").get(0), "Sininen", "M", 15.50, vrepository.findByNimi("Hurtta").get(0));
+            Tuote v1 = new Tuote("Takki", trepository.findByNimi("Vaate").get(0), "Punainen", "S", 21.5, vrepository.findByNimi("Rukka").get(0));
+            Tuote v2 = new Tuote("Vinkulelu", trepository.findByNimi("Lelu").get(0), "Sininen", "M", 15.50, vrepository.findByNimi("Hurtta").get(0));
 
             Asiakas a1 = new Asiakas("Matti", "Meikäläinen", "Matinkuja 3", "00100", "Helsinki", "020123456",
                     "matti.meika@gmail.com");

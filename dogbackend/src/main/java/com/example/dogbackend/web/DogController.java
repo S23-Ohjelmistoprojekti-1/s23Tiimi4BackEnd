@@ -20,8 +20,8 @@ import org.springframework.validation.BindingResult;
 import com.example.dogbackend.domain.Asiakas;
 import com.example.dogbackend.domain.AsiakasRepository;
 import com.example.dogbackend.domain.TyyppiRepository;
-import com.example.dogbackend.domain.Vaate;
-import com.example.dogbackend.domain.VaateRepository;
+import com.example.dogbackend.domain.Tuote;
+import com.example.dogbackend.domain.TuoteRepository;
 import com.example.dogbackend.domain.Valmistaja;
 import com.example.dogbackend.domain.ValmistajaRepository;
 
@@ -30,7 +30,7 @@ import jakarta.validation.Valid;
 @Controller
 public class DogController {
 	@Autowired
-	private VaateRepository repository;
+	private TuoteRepository repository;
 	@Autowired
 	private ValmistajaRepository vrepository;
 	@Autowired
@@ -87,7 +87,7 @@ public class DogController {
 	// adding
 	@RequestMapping(value = "add")
 	public String addVaate (Model model) {
-		model.addAttribute("vaate", new Vaate());
+		model.addAttribute("vaate", new Tuote());
 		model.addAttribute("valmistajat", vrepository.findAll());
 		model.addAttribute("tyypit", trepository.findAll());
 		return "addItem";
@@ -109,7 +109,7 @@ public class DogController {
 	
 	//saving
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveVaate (@Valid @ModelAttribute("vaate") Vaate vaate, BindingResult bindingResult, Model model) {
+	public String saveVaate (@Valid @ModelAttribute("vaate") Tuote vaate, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("Valid error" + vaate);
 			// model.addAttribute("vaate", new Vaate());
@@ -158,7 +158,7 @@ public class DogController {
 	}
 	
     @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String addValid(Vaate vaate, Model model) {
+    public String addValid(Tuote vaate, Model model) {
     	model.addAttribute("Vaate", vaate);
 	    return "addItem";
     }
@@ -167,7 +167,7 @@ public class DogController {
     public String valmistajaVaatteet(@PathVariable Long valmistajaid, Model model) {
         Valmistaja valmistaja = vrepository.findById(valmistajaid).orElse(null);
         if (valmistaja != null) {
-            List<Vaate> valmistajaVaatteet = repository.findByValmistaja(valmistaja);
+            List<Tuote> valmistajaVaatteet = repository.findByValmistaja(valmistaja);
             model.addAttribute("valmistaja", valmistaja);
             model.addAttribute("valmistajaVaatteet", valmistajaVaatteet);
             return "valmistajaVaatteet";
